@@ -12,5 +12,6 @@ libraryDependencies += "org.apache.spark" % "spark-sql_2.11" % sparkVersion
 libraryDependencies += "org.slf4j" % "slf4j-api" % "1.7.25"
 libraryDependencies += "org.slf4j" % "slf4j-simple" % "1.7.25" % "test"
 libraryDependencies += "log4j" % "log4j" % "1.2.17"
+libraryDependencies += "commons-io" % "commons-io" % "2.6"
 
 parallelExecution in Test := false
