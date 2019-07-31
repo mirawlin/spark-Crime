@@ -1,6 +1,6 @@
-package au.com.mir
+package au.com.mir.io
 
-import org.apache.spark.sql.{ DataFrame, SparkSession }
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object Io {
 

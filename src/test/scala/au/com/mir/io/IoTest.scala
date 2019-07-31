@@ -1,4 +1,4 @@
-package au.com.mir
+package au.com.mir.io
 
 import java.io.File
 import java.nio.file.{Files, Paths}
