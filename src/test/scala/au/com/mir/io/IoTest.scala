@@ -30,6 +30,7 @@ class IoTest extends WordSpec with Matchers {
     "read a csv file" in {
       //GIVEN
       implicit val session: SparkSession = createSparkSession()
+
       val file = "src/test/resources/LA_MO_Codes.csv"
 
       //WHEN
@@ -37,6 +38,7 @@ class IoTest extends WordSpec with Matchers {
 
       //THEN
       result.count() shouldEqual 533
+
     }
   }
 
