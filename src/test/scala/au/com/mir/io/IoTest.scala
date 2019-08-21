@@ -36,7 +36,7 @@ class IoTest extends WordSpec with Matchers {
       val result = Io.readCsv(file)
 
       //THEN
-      result.count() shouldEqual 321
+      result.count() shouldEqual 533
     }
   }
 
