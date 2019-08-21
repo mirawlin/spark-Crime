@@ -30,7 +30,7 @@ class IoTest extends WordSpec with Matchers {
     "read a csv file" in {
       //GIVEN
       implicit val session: SparkSession = createSparkSession()
-      val file = "src/test/resources/salaries-by-region.csv"
+      val file = "src/test/resources/LA_MO_Codes.csv"
 
       //WHEN
       val result = Io.readCsv(file)

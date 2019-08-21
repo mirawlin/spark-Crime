@@ -2,3 +2,6 @@ project/target/*
 project/project/target/*
 target/*
 /.idea/
+src/test/resources/boston_crime.csv
+src/test/resources/crime_denver.csv
+src/test/resources/Crime_in_LA_Data_2010_2017.csv

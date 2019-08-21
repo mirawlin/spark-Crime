@@ -1,4 +1,4 @@
-name := "spark-SalariesAfterCollege"
+name := "spark-Crime"
 
 version := "0.1"
 
