@@ -6,9 +6,9 @@ import org.apache.spark.sql.SparkSession
 object Main extends App {
   implicit val session: SparkSession = SparkSupport.getOrCreateSession()
 
-  val df = Io.readCsv("src/main/resources/degrees-that-pay-back.csv")
+  val df = Io.readCsv("src/main/resources/LA_MO_Codes.csv")
 
-  Io.writeParquet(df, "target/degrees-that-pay-back")
+  Io.writeParquet(df, "target/Codes")
 
 }
 
