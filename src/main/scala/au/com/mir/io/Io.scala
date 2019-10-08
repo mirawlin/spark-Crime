@@ -1,12 +1,13 @@
 package au.com.mir.io
 
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.{ DataFrame, SparkSession }
 
 object Io {
 
   def readCsv(fileName: String)(implicit sparkSession: SparkSession): DataFrame = {
     sparkSession
       .read
+      .option("header", "true")
       .csv(fileName)
   }
 

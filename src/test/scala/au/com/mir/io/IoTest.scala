@@ -1,43 +1,37 @@
 package au.com.mir.io
 
 import java.io.File
-import java.nio.file.{Files, Paths}
+import java.nio.file.{ Files, Paths }
 
 import org.apache.commons.io.FileUtils
 import org.apache.spark.sql.SparkSession
-import org.scalatest.{Matchers, WordSpec}
+import au.com.mir.TestUtils.createSparkSession
+import org.scalatest.{ Matchers, WordSpec }
 
 class IoTest extends WordSpec with Matchers {
-
-  def createSparkSession(appName: String = getClass.getName): SparkSession = {
-    SparkSession.clearActiveSession()
-    val globalSession = SparkSession.getDefaultSession.getOrElse(SparkSession.builder()
-      .appName("Global session")
-      .master("local[*]")
-      .config("avro.mapred.ignore.inputs.without.extension", value = false)
-      .config("spark.debug.maxToStringFields", 5000)
-      .config("spark.network.timeout", "200s")
-      .config("spark.ui.enabled", "false")
-      .config("spark.hadoop.fs.s3a.server-side-encryption-algorithm", "AES256")
-      .getOrCreate())
-    val session = globalSession.newSession()
-    session.conf.set("spark.app.name", appName)
-    SparkSession.setActiveSession(session)
-    session
-  }
 
   "read Csv" should {
     "read a csv file" in {
       //GIVEN
       implicit val session: SparkSession = createSparkSession()
 
-      val file = "src/test/resources/LA_MO_Codes.csv"
+      val file = "src/test/resources/boston_crime.csv"
+      val file2 = "src/test/resources/crime_denver.csv"
+      val file3 = "src/test/resources/Crime_in_LA_Data_2010_2017.csv"
+
 
       //WHEN
       val result = Io.readCsv(file)
+      result.show(10)
+
+      val result2 = Io.readCsv(file2)
+      result2.show(10)
+
+      val result3 = Io.readCsv(file3)
+      result3.show(10)
 
       //THEN
-      result.count() shouldEqual 533
+      result.count() shouldEqual 327820
 
     }
   }
@@ -65,4 +59,5 @@ class IoTest extends WordSpec with Matchers {
       session.read.parquet(path).count() should be(2)
     }
   }
+
 }
